@@ -180,16 +180,16 @@ def train_sacfl(config, model, train_dataset, dev_datasets, mu):
     # df2 = pd.DataFrame(test_acc_info_list, columns=['Current_task', 'Epoch', 'Test_task', 'Test_acc'])
     df3 = pd.DataFrame(diff_epoch_list, columns=['Diff'])
     if config.attack_type != 'none':
-        df1.to_csv('Results/attack_{}_defense_{}_train_acc_ccfed_tasknum_{}_{}.csv'.format(config.attack_type, config.defense, config.task_number, config.model_name))
+        df1.to_csv('Results/attack_{}_defense_{}_train_acc_sacfl_tasknum_{}_{}.csv'.format(config.attack_type, config.defense, config.task_number, config.model_name))
         if config.defense == 'none':
             df4 = pd.DataFrame(attack_degradation, columns=['Client_id', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Epoch', 'Task'])
-            df4.to_csv('Results/attack_{}_degradation_ccfed_tasknum_{}_{}_attacktaskid_{}.csv'.format(config.attack_type, config.task_number, config.model_name, config.attack_task_id))
-            df3.to_csv('Results/attack_{}_diff_ccfed_tasknum_{}_{}.csv'.format(config.attack_type, config.task_number, config.model_name))
+            df4.to_csv('Results/attack_{}_degradation_sacfl_tasknum_{}_{}_attacktaskid_{}.csv'.format(config.attack_type, config.task_number, config.model_name, config.attack_task_id))
+            df3.to_csv('Results/attack_{}_diff_sacfl_tasknum_{}_{}.csv'.format(config.attack_type, config.task_number, config.model_name))
    
     elif config.attack_type == 'none':
-        df1.to_csv('Results/train_acc_ccfed_tasknum_{}_{}.csv'.format(config.task_number, config.model_name))
-        # df2.to_csv('Results/test_acc_ccfed_tasknum_{}_{}.csv'.format(config.task_number, config.model_name))
-        df3.to_csv('Results/diff_ccfed_tasknum_{}_{}.csv'.format(config.task_number, config.model_name))
+        df1.to_csv('Results/train_acc_sacfl_tasknum_{}_{}.csv'.format(config.task_number, config.model_name))
+        # df2.to_csv('Results/test_acc_sacfl_tasknum_{}_{}.csv'.format(config.task_number, config.model_name))
+        df3.to_csv('Results/diff_sacfl_tasknum_{}_{}.csv'.format(config.task_number, config.model_name))
     
     print('\n Total Run Time: {0:0.4f}'.format(time.time() - start_time))
 
